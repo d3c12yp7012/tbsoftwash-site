@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://d3c12yp7012.github.io/tbsoftwash-site/sitemap.xml
