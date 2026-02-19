@@ -1,0 +1,58 @@
+---
+interface GalleryItem {
+  before: string;
+  after: string;
+  title: string;
+  category: string;
+}
+
+const gallery: GalleryItem[] = [
+  { before: '/images/before1.jpg', after: '/images/after1.jpg', title: 'House Washing', category: 'Residential' },
+  { before: '/images/before2.jpg', after: '/images/after2.jpg', title: 'Roof Cleaning', category: 'Residential' },
+  { before: '/images/before3.jpg', after: '/images/after3.jpg', title: 'Driveway Cleaning', category: 'Residential' },
+  { before: '/images/before4.jpg', after: '/images/after4.jpg', title: 'Commercial Building', category: 'Commercial' },
+];
+---
+
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Before & After Gallery</h2>
+      <p class="text-xl text-gray-600">See the stunning results of our professional work</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {gallery.map((item) => (
+        <div class="group rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow">
+          <div class="grid grid-cols-2 gap-0 h-96">
+            {/* Before Image */}
+            <div class="relative bg-gray-300 overflow-hidden">
+              <img src={item.before} alt={`${item.title} - Before`} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+              <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all flex items-center justify-center">
+                <span class="text-white font-bold text-sm md:text-base opacity-0 group-hover:opacity-100 transition">BEFORE</span>
+              </div>
+            </div>
+            
+            {/* After Image */}
+            <div class="relative bg-gray-300 overflow-hidden">
+              <img src={item.after} alt={`${item.title} - After`} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+              <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all flex items-center justify-center">
+                <span class="text-white font-bold text-sm md:text-base opacity-0 group-hover:opacity-100 transition">AFTER</span>
+              </div>
+            </div>
+          </div>
+          
+          {/* Caption */}
+          <div class="bg-gray-50 p-4">
+            <h3 class="font-bold text-gray-900 text-lg">{item.title}</h3>
+            <p class="text-sm text-gray-600">{item.category}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <div class="text-center mt-12">
+      <a href="/gallery" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">View Full Gallery</a>
+    </div>
+  </div>
+</section>

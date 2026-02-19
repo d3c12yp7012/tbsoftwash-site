@@ -1,24 +1,110 @@
 ---
-title: 'Blog - TB Soft Wash'
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+
+const blogPosts = [
+  {
+    id: 1,
+    title: 'Why Professional Roof Cleaning is Worth the Investment',
+    excerpt: 'Discover why roof cleaning should be part of your annual home maintenance routine and how it can save you money long-term.',
+    date: 'Feb 15, 2026',
+    category: 'Roof Care',
+    image: '/images/blog1.jpg'
+  },
+  {
+    id: 2,
+    title: '5 Signs Your House Needs Professional Cleaning',
+    excerpt: 'Learn the telltale signs that indicate your home exterior needs attention from professional cleaning services.',
+    date: 'Feb 10, 2026',
+    category: 'Home Care',
+    image: '/images/blog2.jpg'
+  },
+  {
+    id: 3,
+    title: 'Soft Wash vs. Pressure Washing: What\'s the Difference?',
+    excerpt: 'Understanding the difference between soft washing and pressure washing helps you choose the right service for your property.',
+    date: 'Feb 5, 2026',
+    category: 'Education',
+    image: '/images/blog3.jpg'
+  },
+  {
+    id: 4,
+    title: 'How to Prevent Moss Growth on Your Roof',
+    excerpt: 'Expert tips for preventing moss and algae growth on your roof and maintaining its appearance year-round.',
+    date: 'Jan 28, 2026',
+    category: 'Prevention',
+    image: '/images/blog4.jpg'
+  },
+  {
+    id: 5,
+    title: 'The Benefits of Regular Gutter Cleaning',
+    excerpt: 'Gutters play a crucial role in protecting your home. Learn why regular cleaning is essential.',
+    date: 'Jan 20, 2026',
+    category: 'Maintenance',
+    image: '/images/blog5.jpg'
+  },
+  {
+    id: 6,
+    title: 'Commercial Property Cleaning: Boost Curb Appeal',
+    excerpt: 'Professional cleaning services can dramatically improve the appearance and value of your commercial property.',
+    date: 'Jan 15, 2026',
+    category: 'Commercial',
+    image: '/images/blog6.jpg'
+  }
+];
 ---
 
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>Blog</title>
-</head>
-<body class="bg-gray-50 p-12">
-  <h1 class="text-4xl font-bold text-center mb-12">Blog</h1>
-  <p class="text-xl text-center">Check back soon for tips on exterior cleaning and maintenance.</p>
-  <div class="grid md:grid-cols-2 gap-8 mt-12">
-    <article class="bg-white p-6 rounded-lg shadow">
-      <h2 class="text-2xl font-bold mb-2">Benefits of Soft Washing</h2>
-      <p>Learn why soft washing is safer than pressure washing.</p>
-    </article>
-    <article class="bg-white p-6 rounded-lg shadow">
-      <h2 class="text-2xl font-bold mb-2">Gutter Cleaning Guide</h2>
-      <p>How to keep your gutters clean year-round.</p>
-    </article>
-  </div>
-</body>
-</html>
+<BaseLayout 
+  title="Blog | Tampa Bay Soft Wash"
+  description="Expert tips and advice on pressure washing, roof cleaning, and property maintenance"
+>
+  <Navigation />
+  
+  {/* Hero */}
+  <section class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-5xl md:text-6xl font-bold mb-4">Our Blog</h1>
+      <p class="text-xl text-blue-100">Expert tips and advice on cleaning and property maintenance</p>
+    </div>
+  </section>
+  
+  {/* Blog Grid */}
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {blogPosts.map((post) => (
+          <article class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow overflow-hidden group">
+            {/* Image */}
+            <div class="h-48 bg-gradient-to-br from-blue-300 to-indigo-400 overflow-hidden">
+              <div class="w-full h-full bg-gradient-to-br from-blue-300 to-indigo-400 group-hover:scale-110 transition-transform duration-300"></div>
+            </div>
+            
+            {/* Content */}
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">{post.category}</span>
+                <span class="text-xs text-gray-500">{post.date}</span>
+              </div>
+              
+              <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition">
+                {post.title}
+              </h3>
+              
+              <p class="text-gray-600 mb-4 line-clamp-2">{post.excerpt}</p>
+              
+              <a href="#" class="text-blue-600 hover:text-blue-700 font-semibold inline-flex items-center">
+                Read More
+                <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <Footer />
+</BaseLayout>

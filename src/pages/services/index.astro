@@ -1,24 +1,143 @@
 ---
-title: 'Services - TB Soft Wash'
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+
+const services = [
+  {
+    id: 'house',
+    title: 'House Washing',
+    icon: '🏠',
+    description: 'Professional soft washing for your entire home exterior',
+    features: [
+      'Gentle on all surfaces (vinyl, stucco, brick)',
+      'Removes dirt, algae, and mildew',
+      'Safe for gutters and trim',
+      'Includes driveways and walkways',
+      'Fully insured and licensed'
+    ]
+  },
+  {
+    id: 'roof',
+    title: 'Roof Cleaning',
+    icon: '🌞',
+    description: 'Safe algae and moss removal without damage',
+    features: [
+      'Removes algae, moss, and mildew growth',
+      'No pressure washing damage',
+      'Extends roof lifespan',
+      'Improves curb appeal',
+      'Eco-friendly solutions'
+    ]
+  },
+  {
+    id: 'window',
+    title: 'Window Cleaning',
+    icon: '🪟',
+    description: 'Crystal-clear windows inside and out',
+    features: [
+      'Residential and commercial',
+      'Streak-free finish',
+      'Frame and sill cleaning',
+      'High-rise capable',
+      'Screens and tracks included'
+    ]
+  },
+  {
+    id: 'gutter',
+    title: 'Gutter Cleaning',
+    icon: '🌧️',
+    description: 'Prevent water damage and maintain proper drainage',
+    features: [
+      'Complete gutter cleaning',
+      'Downspout cleaning and flushing',
+      'Debris removal',
+      'Gutter guards available',
+      'Regular maintenance programs'
+    ]
+  },
+  {
+    id: 'paver',
+    title: 'Paver Sealing',
+    icon: '🪨',
+    description: 'Protect and enhance pavers, concrete, and stone',
+    features: [
+      'Removes stains and discoloration',
+      'Protective sealant application',
+      'Enhances color and finish',
+      'Prevents future staining',
+      'Weather-resistant protection'
+    ]
+  },
+  {
+    id: 'graffiti',
+    title: 'Graffiti Removal',
+    icon: '🎨',
+    description: 'Quick and safe graffiti removal services',
+    features: [
+      'Chemical and pressure solutions',
+      'No surface damage',
+      'Quick turnaround',
+      'Commercial and residential',
+      'Preventative treatments available'
+    ]
+  }
+];
 ---
 
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>Services</title>
-</head>
-<body class="bg-gray-50 p-12">
-  <h1 class="text-4xl font-bold text-center mb-12">Services</h1>
-  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-    <div><h2 class="text-2xl font-bold mb-4">Soft Washing</h2><p>Low-pressure cleaning for roofs, houses.</p></div>
-    <div><h2 class="text-2xl font-bold mb-4">Pressure Washing</h2><p>Driveways, sidewalks, decks.</p></div>
-    <div><h2 class="text-2xl font-bold mb-4">Gutter Cleaning</h2><p>Safe removal of debris.</p></div>
-    <div><h2 class="text-2xl font-bold mb-4">Window Cleaning</h2><p>Interior & exterior.</p></div>
-    <div><h2 class="text-2xl font-bold mb-4">Paver Sealing</h2><p>Protect and enhance.</p></div>
-    <div><h2 class="text-2xl font-bold mb-4">Roof Cleaning</h2><p>Algae & moss removal.</p></div>
-  </div>
-  <div class="text-center mt-12">
-    <a href="/contact" class="bg-blue-600 text-white px-8 py-4 rounded-lg font-bold">Book Now</a>
-  </div>
-</body>
-</html>
+<BaseLayout 
+  title="Our Services | Tampa Bay Soft Wash"
+  description="Professional cleaning services including house washing, roof cleaning, window cleaning, and more in the Tampa Bay area"
+>
+  <Navigation />
+  
+  {/* Hero Section */}
+  <section class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-5xl md:text-6xl font-bold mb-4">Our Services</h1>
+      <p class="text-xl text-blue-100">Comprehensive exterior cleaning solutions for residential and commercial properties</p>
+    </div>
+  </section>
+  
+  {/* Services */}
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {services.map((service, index) => (
+        <div id={service.id} class={`mb-20 ${index !== services.length - 1 ? 'pb-20 border-b border-gray-200' : ''}`}>
+          <div class={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-12 items-center`}>
+            {/* Image */}
+            <div class="md:w-1/2">
+              <div class="bg-gradient-to-br from-blue-100 to-indigo-100 h-80 rounded-xl flex items-center justify-center">
+                <span class="text-8xl">{service.icon}</span>
+              </div>
+            </div>
+            
+            {/* Content */}
+            <div class="md:w-1/2">
+              <h2 class="text-4xl font-bold text-gray-900 mb-4">{service.title}</h2>
+              <p class="text-xl text-gray-600 mb-6">{service.description}</p>
+              
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">What's Included:</h3>
+              <ul class="space-y-3 mb-8">
+                {service.features.map((feature) => (
+                  <li class="flex items-start">
+                    <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-gray-700">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              
+              <a href="/contact?service={service.title}" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition inline-block">
+                Get Quote for {service.title}
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+  
+  <Footer />
+</BaseLayout>

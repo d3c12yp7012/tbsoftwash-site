@@ -1,0 +1,66 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = 'Tampa Bay Soft Wash & Pressure Cleaning', description = 'Professional exterior cleaning services for Clearwater, Pinellas, Pasco, and Hillsborough County, FL' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="generator" content={Astro.generator} />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  
+  <!-- SEO Meta Tags -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content="https://d3c12yp7012.github.io/tbsoftwash-site/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Tampa Bay Soft Wash & Pressure Cleaning",
+    "description": "Professional soft wash and pressure cleaning services",
+    "url": "https://d3c12yp7012.github.io/tbsoftwash-site/",
+    "telephone": "(727) 641-1296",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Clearwater",
+      "addressLocality": "Clearwater",
+      "addressRegion": "FL",
+      "postalCode": "33755",
+      "addressCountry": "US"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Clearwater" },
+      { "@type": "City", "name": "Tampa" },
+      { "@type": "City", "name": "St. Petersburg" },
+      { "@type": "City", "name": "Pinellas Park" }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": "47"
+    }
+  }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body class="bg-white text-gray-900">
+  <slot />
+</body>
+</html>

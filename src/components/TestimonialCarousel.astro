@@ -1,0 +1,79 @@
+---
+interface Testimonial {
+  name: string;
+  role: string;
+  content: string;
+  rating: number;
+  avatar?: string;
+}
+
+const testimonials: Testimonial[] = [
+  {
+    name: 'John Martinez',
+    role: 'Homeowner, Clearwater',
+    content: 'Outstanding service! My roof looks brand new. The team was professional, efficient, and cleaned up perfectly.',
+    rating: 5
+  },
+  {
+    name: 'Sarah Johnson',
+    role: 'Property Manager, St. Petersburg',
+    content: 'We use Tampa Bay Soft Wash for our portfolio of homes. Consistently reliable and excellent results every time.',
+    rating: 5
+  },
+  {
+    name: 'Mike Chen',
+    role: 'Business Owner, Tampa',
+    content: 'Best pressure washing service in the area. They maintain our commercial building beautifully every quarter.',
+    rating: 5
+  },
+  {
+    name: 'Lisa Anderson',
+    role: 'Homeowner, Pinellas Park',
+    content: 'Affordable, professional, and they genuinely care about their work. Highly recommended!',
+    rating: 5
+  }
+];
+
+const renderStars = (rating: number) => {
+  return Array(rating).fill('★').join('');
+};
+---
+
+<section class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">What Our Customers Say</h2>
+      <p class="text-xl text-gray-600">Over 200 5-star reviews from satisfied clients</p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 gap-8">
+      {testimonials.map((testimonial) => (
+        <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+          {/* Stars */}
+          <div class="flex items-center mb-4">
+            <span class="text-yellow-400 text-2xl">{renderStars(testimonial.rating)}</span>
+          </div>
+          
+          {/* Quote */}
+          <p class="text-gray-700 mb-6 italic text-lg">"{testimonial.content}"</p>
+          
+          {/* Author */}
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
+              {testimonial.name.charAt(0)}
+            </div>
+            <div>
+              <p class="font-bold text-gray-900">{testimonial.name}</p>
+              <p class="text-sm text-gray-600">{testimonial.role}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <div class="text-center mt-12">
+      <p class="text-gray-600 mb-4">Ready to join hundreds of satisfied customers?</p>
+      <a href="/contact" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">Get Your Free Quote Today</a>
+    </div>
+  </div>
+</section>
